@@ -78,3 +78,38 @@ export class Home {
         this.context.stroke();
     }
 }
+
+export class MasterCard {
+    canvas: HTMLCanvasElement;
+    context: CanvasRenderingContext2D;
+    radius: number;
+
+    constructor(radius: number) {
+        this.canvas = document.getElementById("master-card") as HTMLCanvasElement;
+        this.context = this.canvas.getContext("2d");
+        this.radius = radius;
+    }
+
+    drawMasterCard() {
+        this.context.fillStyle = "black";
+        this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.context.globalCompositeOperation = "exclusion";
+
+        this.context.fillStyle = "red";
+        this.context.beginPath();
+        this.context.arc(225, 148.9, this.radius, 0, 2 * Math.PI);
+        this.context.fill();
+        this.context.closePath();
+
+        this.context.fillStyle = "orange";
+        this.context.beginPath();
+        this.context.arc(375, 148.9, this.radius, 0, 2 * Math.PI);
+        this.context.fill();
+        this.context.closePath();
+
+        this.context.fillStyle = "white";
+        this.context.font = "60px helvetica";
+        this.context.fillText("mastercard", 150, 340);
+    }
+}
