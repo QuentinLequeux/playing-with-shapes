@@ -108,8 +108,60 @@ export class MasterCard {
         this.context.fill();
         this.context.closePath();
 
+    }
+    drawText() {
         this.context.fillStyle = "white";
         this.context.font = "60px helvetica";
         this.context.fillText("mastercard", 150, 340);
+    }
+}
+
+export class Triangle {
+    canvas: HTMLCanvasElement;
+    context: CanvasRenderingContext2D;
+    backColor: string;
+    triangleColor: string;
+    bigCircleColor: string;
+    smallCircleColor: string;
+
+    constructor(backColor: string, triangleColor: string, bigCircleColor: string, smallCircleColor: string) {
+        this.canvas = document.getElementById("triangle") as HTMLCanvasElement;
+        this.context = this.canvas.getContext("2d");
+        this.backColor = backColor;
+        this.triangleColor = triangleColor;
+        this.bigCircleColor = bigCircleColor;
+        this.smallCircleColor = smallCircleColor;
+    }
+
+    drawTriangle() {
+        this.context.fillStyle = this.backColor;
+        this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        //Triangle
+        this.context.fillStyle = this.triangleColor;
+        this.context.beginPath();
+        this.context.moveTo(375, 250);
+        this.context.lineTo(300, 100);
+        this.context.lineTo(225, 250);
+        this.context.lineTo(375, 250);
+        this.context.fill();
+        this.context.closePath();
+
+    }
+
+    drawCircle() {
+        //Cercle1
+        this.context.fillStyle = this.bigCircleColor;
+        this.context.beginPath();
+        this.context.arc(295, 190, 45, 0, 2 * Math.PI);
+        this.context.fill();
+        this.context.closePath();
+
+        //Cercle2
+        this.context.fillStyle = this.smallCircleColor;
+        this.context.beginPath();
+        this.context.arc(301, 188, 35, 0, 2 * Math.PI);
+        this.context.fill();
+        this.context.closePath();
     }
 }
